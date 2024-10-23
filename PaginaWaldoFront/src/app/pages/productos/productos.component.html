@@ -1,0 +1,37 @@
+<div *ngIf="subCategoryId !== 'null'">
+
+  <div class="container-fluid" style="margin-top: 8rem;" *ngIf="categoriProducts">
+    <div class="row">
+           <!-- Sidebar -->
+    <div class="col-12 col-md-3 col-lg-2" >
+      <app-side-filters
+        [allProductsCategory]="allProducts"
+        [categoriProducts]="categoriProducts"
+        (filteredProductsChange)="updateFilteredProducts($event)">
+      </app-side-filters>
+    </div>
+      
+      <!-- Main content (Products) -->
+    <div class="col-12 col-md-9 col-lg-10">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a [routerLink]="['/']">Inicio</a></li>
+          <li class="breadcrumb-item"><a [routerLink]="['/category', categoriProducts.id]">{{ categoriProducts.descripcion }}</a></li>
+          <li class="breadcrumb-item active" aria-current="page">{{ titleSubCategory }}</li>
+        </ol>
+      </nav>
+      <h1>{{ titleSubCategory }}</h1>
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-4  " *ngFor="let category of filteredProducts">
+          <app-card-item  [product]="category" [isHome]="true"></app-card-item>
+        </div>
+      </div>
+    </div>
+    </div>
+   
+  </div>
+</div>
+  
+
+  
+  
