@@ -4,6 +4,7 @@ import { BehaviorSubject,  map, Observable, of, tap } from 'rxjs';
 
 import { Router } from '@angular/router';
 import { AuthResponse } from '../../models/auth-response';
+import { environment } from '../../../environments/environment';
 
 
 @Injectable({
@@ -22,7 +23,7 @@ export class AuthService {
   }
 
   register(email: string, password: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/register`, { email, password });
+    return this.http.post(`${environment.apiUrl}api/auth/register`, { email, password });
   }
 
   public get currentUserValue(): string | null {
@@ -31,7 +32,7 @@ export class AuthService {
 
 
   login(email: string, password: string): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.apiUrl}/login`, { email, password }).pipe(
+    return this.http.post<AuthResponse>(`${environment.apiUrl}api/auth/login`, { email, password }).pipe(
       tap(response => {
         if (response.accessToken && response.refreshToken) {
           sessionStorage.setItem('accessToken', response.accessToken);
@@ -64,7 +65,7 @@ export class AuthService {
       refreshToken
     };
   
-    return this.http.post<AuthResponse>(`${this.apiUrl}/refresh`, tokenModel).pipe(
+    return this.http.post<AuthResponse>(`${environment.apiUrl}api/auth/refresh`, tokenModel).pipe(
       map((response: AuthResponse) => {
         sessionStorage.setItem('accessToken', response.accessToken);
         sessionStorage.setItem('refreshToken', response.refreshToken);

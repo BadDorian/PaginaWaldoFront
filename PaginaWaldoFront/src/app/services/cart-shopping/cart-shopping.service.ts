@@ -3,6 +3,7 @@ import { BehaviorSubject, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { CarritoItemDto } from '../../models/carritoItemDto';
 import { StockService } from '../stock/stock.service';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -17,13 +18,13 @@ export class CartShoppingService {
   constructor(private http: HttpClient, private stockService : StockService) {}
 
   obtenerCarrito(sessionId: string | null) {
-    this.http.get<any[]>(`${this.apiUrl}/getCarrito?userId=${sessionId}`).subscribe(items => {
+    this.http.get<any[]>(`${environment.apiUrl}api/Carrito/getCarrito?userId=${sessionId}`).subscribe(items => {
       this.carrito.next(items);
     });
   }
 
   agregarProducto(carrito: CarritoItemDto) {
-    return this.http.post(`${this.apiUrl}/addToCarrito`, carrito)
+    return this.http.post(`${environment.apiUrl}api/Carrito/addToCarrito`, carrito)
     .pipe(
       tap(() => {
         // Refrescar el carrito después de agregar un producto
@@ -36,7 +37,7 @@ export class CartShoppingService {
   }
 
   eliminarProducto(productoId: number, sessionId: string, cantidad: number) {
-    this.http.delete<{ message: string }>(`${this.apiUrl}/removeFromCarrito?userId=${sessionId}&productoId=${productoId}&cantidad=${cantidad}`)
+    this.http.delete<{ message: string }>(`${environment.apiUrl}api/Carrito/removeFromCarrito?userId=${sessionId}&productoId=${productoId}&cantidad=${cantidad}`)
       .subscribe({
         next: (response) => {
           console.log(response.message); // Verifica el mensaje en la consola
