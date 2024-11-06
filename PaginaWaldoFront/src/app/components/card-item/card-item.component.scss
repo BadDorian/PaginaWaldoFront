@@ -1,0 +1,88 @@
+
+  
+  
+  
+  .custom-outline-btn{
+    --bs-btn-color: #dddddb;
+    --bs-btn-border-color: #dddddb;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #dddddb;
+    --bs-btn-hover-border-color: #dddddb;
+    --bs-btn-focus-shadow-rgb: 108, 117, 125;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #dddddb;
+    --bs-btn-active-border-color: #dddddb;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #dddddb;
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: #dddddb;
+    --bs-gradient: none;
+  }
+
+ 
+
+  .margin-bottom-custom{
+    margin-bottom: 4.5rem;
+  }
+
+@media screen and (max-width: 768px){
+  .margin-bottom-custom{
+    margin-bottom: .5rem;
+  }
+}
+
+  /* Subcategoría */
+.subcat-image-wrapper {
+  position: relative;
+  height: 25vw !important;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.subcat-name {
+  font-size: 2rem;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+/* Productos */
+.product-card {
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-20px);
+  box-shadow: 5px 10px 20px black;
+}
+
+/* Animación de entrada */
+.product-card {
+  opacity: 0;
+  animation: fadeInUp 0.8s forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Precios */
+.card-price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+}
