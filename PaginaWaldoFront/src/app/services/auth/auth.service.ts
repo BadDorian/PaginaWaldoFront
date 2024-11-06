@@ -12,7 +12,7 @@ import { environment } from '../../../environments/environment';
 })
 export class AuthService {
 
-  private apiUrl = 'https://localhost:7283/api/auth';
+  private apiUrl = environment.apiUrl + 'api/auth';
   private refreshTokenTimeout : any;
   private currentUserSubject: BehaviorSubject<string | null>;
   public currentUser: Observable<string | null>;
@@ -23,7 +23,7 @@ export class AuthService {
   }
 
   register(email: string, password: string): Observable<any> {
-    return this.http.post(`${environment.apiUrl}api/auth/register`, { email, password });
+    return this.http.post(`${this.apiUrl}/register`, { email, password });
   }
 
   public get currentUserValue(): string | null {
@@ -32,7 +32,7 @@ export class AuthService {
 
 
   login(email: string, password: string): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${environment.apiUrl}api/auth/login`, { email, password }).pipe(
+    return this.http.post<AuthResponse>(`${this.apiUrl}/login`, { email, password }).pipe(
       tap(response => {
         if (response.accessToken && response.refreshToken) {
           sessionStorage.setItem('accessToken', response.accessToken);
@@ -65,7 +65,7 @@ export class AuthService {
       refreshToken
     };
   
-    return this.http.post<AuthResponse>(`${environment.apiUrl}api/auth/refresh`, tokenModel).pipe(
+    return this.http.post<AuthResponse>(`${this.apiUrl}/refresh`, tokenModel).pipe(
       map((response: AuthResponse) => {
         sessionStorage.setItem('accessToken', response.accessToken);
         sessionStorage.setItem('refreshToken', response.refreshToken);

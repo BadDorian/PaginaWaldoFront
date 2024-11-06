@@ -18,7 +18,7 @@ export class UserService {
   
   setUser(user: string) {
     
-    sessionStorage.setItem('logedUser', user);
+    localStorage.setItem('logedUser', user);
     this.userSubject.next(user)
   }
 
@@ -27,6 +27,6 @@ export class UserService {
   }
 
   clearUser() {
-    sessionStorage.removeItem('logedUser')
+    localStorage.removeItem('logedUser')
   }
 }

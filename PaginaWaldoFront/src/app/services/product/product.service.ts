@@ -10,7 +10,7 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root'
 })
 export class ProductService {
-  private apiUrl = 'https://localhost:7283/api/Producto';
+  private apiUrl = environment.apiUrl + 'api/Producto';
   private dataSubject = new BehaviorSubject<any[]>([]);
   
   constructor(private http: HttpClient) {
@@ -33,45 +33,45 @@ export class ProductService {
   }
 
   create(product: any): Observable<any> {
-    return this.http.post<any>(`${environment.apiUrl}api/Producto/createProducto`,  product)
+    return this.http.post<any>(`${this.apiUrl}/createProducto`,  product)
   }
 
   getProducts(): Observable<any[]> {
-    return this.http.get<any[]>(`${environment.apiUrl}api/Producto/getAllProducto`)
+    return this.http.get<any[]>(`${this.apiUrl}/getAllProducto`)
   }
 
   getProductsAdmin(): Observable<any[]> {
-    return this.http.get<any[]>(`${environment.apiUrl}api/Producto/getAllProductoAdmin`)
+    return this.http.get<any[]>(`${this.apiUrl}/getAllProductoAdmin`)
   }
   getProductById(id : any): Observable<any> {
-    return this.http.get<any>(`${environment.apiUrl}api/Producto/getProductoById/${id}`)
+    return this.http.get<any>(`${this.apiUrl}/getProductoById/${id}`)
   }
   getProductBySubCategoryId(subCategoryId : any): Observable<any> {
-    return this.http.get<any>(`${environment.apiUrl}api/Producto/getProductoBySubCategoryId/${subCategoryId}`)
+    return this.http.get<any>(`${this.apiUrl}/getProductoBySubCategoryId/${subCategoryId}`)
   }
   getCompleteCategoryByProductId(productId : any): Observable<any> {
-    return this.http.get<any>(`${environment.apiUrl}api/Producto/getCompleteCategoryByProductId/${productId}`)
+    return this.http.get<any>(`${this.apiUrl}/getCompleteCategoryByProductId/${productId}`)
   }
 
   getCompleteCategoryBySubCatId(subCategoryId : any): Observable<any> {
-    return this.http.get<any>(`${environment.apiUrl}api/Producto/getCompleteCategoryBySubCatId/${subCategoryId}`)
+    return this.http.get<any>(`${this.apiUrl}/getCompleteCategoryBySubCatId/${subCategoryId}`)
   }
   getCompleteCategoryById(categoryId : any): Observable<any> {
-    return this.http.get<any>(`${environment.apiUrl}api/Producto/getCompleteCategoryById/${categoryId}`)
+    return this.http.get<any>(`${this.apiUrl}/getCompleteCategoryById/${categoryId}`)
   }
 
   update(product: any): Observable<any> {
-    return this.http.put<any>(`${environment.apiUrl}api/Producto/updateProducto`,  product)
+    return this.http.put<any>(`${this.apiUrl}/updateProducto`,  product)
   }
   delete(id: number): Observable<any> {
-    return this.http.delete<any>(`${environment.apiUrl}api/Producto/deleteProducto/${id}` )
+    return this.http.delete<any>(`${this.apiUrl}/deleteProducto/${id}` )
   }
 
   getCategories(): Observable<any[]> {
-    return this.http.get<any[]>(`${environment.apiUrl}api/Producto/getAllCategories`)
+    return this.http.get<any[]>(`${this.apiUrl}/getAllCategories`)
   }
 
   getSubCategories(): Observable<any[]> {
-    return this.http.get<any[]>(`${environment.apiUrl}api/Producto/getAllSubCategories`)
+    return this.http.get<any[]>(`${this.apiUrl}/getAllSubCategories`)
   }
 }

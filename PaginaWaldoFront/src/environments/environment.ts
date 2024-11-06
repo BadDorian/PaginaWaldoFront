@@ -1,4 +1,3 @@
 export const environment = {
-    production: false,
-    apiUrl: 'http://mpacheco-001-site1.dtempurl.com/' 
+    apiUrl : "https://testrepuestos-a6ephxhwg7frakd0.canadacentral-01.azurewebsites.net/"
 };
