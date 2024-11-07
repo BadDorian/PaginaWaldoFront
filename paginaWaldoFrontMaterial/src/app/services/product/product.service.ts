@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Product } from '../../models/product/product';
+import { environment } from '../../../environments/environment';
 
 
 
@@ -9,7 +10,9 @@ import { Product } from '../../models/product/product';
   providedIn: 'root'
 })
 export class ProductService {
-  private apiUrl = 'https://localhost:7283/api/Producto';
+  private apiUrl = environment.apiUrl + 'api/Producto';
+  //private apiUrl = 'https://localhost:7283/api/Producto';
+
   private dataSubject = new BehaviorSubject<any[]>([]);
   
   constructor(private http: HttpClient) {

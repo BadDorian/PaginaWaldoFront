@@ -4,6 +4,7 @@ import { BehaviorSubject,  map, Observable, of, tap } from 'rxjs';
 
 import { Router } from '@angular/router';
 import { AuthResponse } from '../../models/auth/auth-response';
+import { environment } from '../../../environments/environment';
 
 
 @Injectable({
@@ -11,7 +12,8 @@ import { AuthResponse } from '../../models/auth/auth-response';
 })
 export class AuthService {
 
-  private apiUrl = 'https://localhost:7283/api/auth';
+  private apiUrl = environment.apiUrl + 'api/auth'
+  //private apiUrl = 'https://localhost:7283/api/auth';
   private refreshTokenTimeout : any;
   private currentUserSubject: BehaviorSubject<string | null>;
   public currentUser: Observable<string | null>;

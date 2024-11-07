@@ -3,6 +3,7 @@ import { BehaviorSubject, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { CarritoItemDto } from '../../models/carro-compras/carritoItemDto';
 import { StockService } from '../stock/stock.service';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,8 @@ export class CartShoppingService {
 
   private carrito = new BehaviorSubject<any[]>([]);
   carrito$ = this.carrito.asObservable();
-  private apiUrl = 'https://localhost:7283/api/Carrito';
+  //private apiUrl = 'https://localhost:7283/api/Carrito';
+  private apiUrl = environment.apiUrl + 'api/Carrito'
 
 
   constructor(private http: HttpClient, private stockService : StockService) {}
