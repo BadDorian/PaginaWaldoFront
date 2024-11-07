@@ -1,0 +1,48 @@
+/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+
+
+.my-class-with-custom-shadow {
+  // Adds a shadow for elevation level 2 with color #e91e63 and 80% of the default opacity:
+  @include mat.elevation(2, #e91e63, 0.8);
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.containerP {  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 7% 86% 7%;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "Header"
+    "SideBar"
+    "Footer";
+  height: 100%;
+}
+
+.Header {
+  justify-self: stretch;
+  align-self: stretch;
+  grid-area: Header;
+  width: 100%;
+}
+
+.SideBar {
+  justify-self: stretch;
+  align-self: stretch;
+  grid-area: SideBar;
+  width: 100%;
+  height: 100%;
+}
+
+.Footer{
+  grid-area: Footer;
+  background: black;
+}
+
+.blueButton{
+  background-color: #44535e !important;
+  color: white !important;
+}

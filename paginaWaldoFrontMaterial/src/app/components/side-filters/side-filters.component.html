@@ -1,0 +1,64 @@
+
+
+<div class="containerFilters">
+    <div class="tittleFilter">
+        <span >Filtros</span>
+    </div>
+    <br>
+    <mat-label *ngIf="isCategory">SubCategorías</mat-label>
+    <hr>
+    <div class="SectionSubCat">
+        
+          <div  *ngIf="isCategory">
+            <div *ngFor="let subCat of categoriProducts?.subCategorias">
+                <a  [routerLink]="['/subCategory/', subCat.id]">
+                  {{ subCat.descripcion }}
+                </a>
+            </div>
+        </div>
+          
+    </div>
+    <br>
+    <mat-label >Orden</mat-label>
+    <hr>
+    <div class="SectionSort">
+        
+        <mat-form-field class="example-full-width">
+            <mat-label>Ordenar Por</mat-label>
+            <mat-select id="sort"  [(ngModel)]="selectedSortOption" (selectionChange)="sortProducts()">
+                @for (option of selectOptions; track option) {
+                    <mat-option [value]="option.value">{{option.viewValue}}</mat-option>
+                  }
+            </mat-select>
+          </mat-form-field>
+    </div>
+    <mat-label >Filtro Precio</mat-label>
+    <hr>
+    <div class="SectionPriceFilter">
+        
+        <div class="minPrice">
+            
+            <mat-form-field  class="example-90-width ">
+                <mat-label>Precio Mínimo</mat-label>
+                <input matInput  placeholder="0" type="number" [(ngModel)]="minPrice">
+            </mat-form-field>
+        </div>
+      
+        <div class="maxPrice">
+            <mat-form-field class="example-90-width ">
+                <mat-label>Precio Máximo</mat-label>
+                <input matInput placeholder="9999" type="number" [(ngModel)]="maxPrice">
+            </mat-form-field>
+        </div>
+        <div class="buttonFilterPrice">
+            <button mat-raised-button class="example-90-width example-90-height" (click)="filterByPrice()">Filtrar por Precio</button>
+        </div>
+        
+    </div>
+
+    <div class="buttonAllSection">
+         <!-- Botón para mostrar todos los productos -->
+         <button class="btnrow" mat-raised-button (click)="showAllProducts()">Ver Todo</button>
+         
+    </div>
+  </div>

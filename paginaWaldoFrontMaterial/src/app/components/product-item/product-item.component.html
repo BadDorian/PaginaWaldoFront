@@ -1,0 +1,32 @@
+<mat-card class="example-card" appearance="outlined">
+    <mat-card-header>
+      <img [src]="product.imgProduct" mat-card-avatar class="example-header-image" alt="Product Image"  >
+      <mat-card-title>{{ product.nombre }}</mat-card-title>
+      <mat-card-subtitle>{{ product.descripcion }}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="product.imgProduct"  class="card-img"  alt="Product Image" height="200px" width="200px" >
+    <mat-card-content class="card-content">
+        
+        <p >${{product.precio}}</p>
+        <p >Stock: {{product.stock}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+        <div >
+            <div *ngIf="isOnlyProduct">
+                <span  id="inputGroup-sizing-default" >Cantidad</span>
+            </div>
+            <button mat-raised-button *ngIf="isOnlyProduct" [disabled]="cantidadProductoSeleccionado ==0" (click)="removeQuantity(product)">-</button>
+            <label *ngIf="isOnlyProduct" for="" style="margin: 1rem;">{{cantidadProductoSeleccionado}}</label>
+            <button mat-raised-button  *ngIf="isOnlyProduct" [disabled]="product.stock <= cantidadProductoSeleccionado" (click)="addQuantity(product)">+</button>
+            <div *ngIf="isOnlyProduct">
+                <button mat-raised-button   (click)="addCarritoNew(product)">Agregar a carrito</button>
+            </div>
+            
+            <div *ngIf="isHome">
+                <button mat-raised-button class="blueButton"  [routerLink]="['/product/' ,product.id]">Ver Producto</button>
+            </div>
+        </div>
+          
+         
+    </mat-card-actions>
+  </mat-card>

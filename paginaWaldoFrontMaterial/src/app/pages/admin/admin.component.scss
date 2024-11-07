@@ -1,0 +1,28 @@
+.containerTable {  display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 10% 90%;
+    gap: 0% 0%;
+    grid-auto-flow: row;
+    justify-items: center;
+    align-items: center;
+    grid-template-areas:
+      "TittleTable"
+      "tableContent";
+  }
+  
+  .tableContent { 
+    grid-area: tableContent; 
+    height: 100%;
+    width: 90%;
+    margin-top: 2rem;
+}
+  
+  .TittleTable { 
+    grid-area: TittleTable; 
+    height: 100%;
+    padding-top: 2rem;
+}
+  
+.button-margin{
+    margin: 4px;
+}

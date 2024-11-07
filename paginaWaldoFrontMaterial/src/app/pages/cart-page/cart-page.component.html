@@ -1,0 +1,28 @@
+<mat-card appearance="outlined"  >
+    <mat-card-header>
+        <mat-card-title-group>
+          <mat-card-title>Carro de Compras</mat-card-title>
+        </mat-card-title-group>
+      </mat-card-header>
+    <mat-card-content>
+        <div  *ngIf="carritoItems.length > 0 ">
+            <div  *ngFor="let product of carritoItems">
+              <img [src]=product.producto.imgProduct  width="50" height="50">
+              {{ product.producto.nombre }} - {{ product.precioUnitario | currency }} x {{ product.cantidad }}
+              <button mat-raised-button class="btn btn-danger btn-sm float-end" (click)="removeProduct(product.producto.id, 1)">Eliminar</button>
+              
+            </div>
+        </div>
+          <div  *ngIf="carritoItems.length == 0 ">
+            <div>
+              carrito vacio
+            </div>
+        </div>
+          <div  *ngIf="carritoItems.length > 0 ">
+            <h6>Total: {{ getTotal() | currency }}</h6>
+            <button mat-raised-button class="m-1" (click)="clearCart()">Vaciar carrito</button>
+            <button mat-raised-button class="m-1" style="background-color: #14435b; color: white;" (click)="sendWhatsAppMessage()">Enviar a WhatsApp</button>
+            <button mat-raised-button class="m-1" style="background-color: #14435b; color: white;" [routerLink]="['/carrito']">Ver carrito</button>
+          </div>
+    </mat-card-content>
+  </mat-card>

@@ -1,0 +1,32 @@
+<h2 mat-dialog-title>Editar Producto</h2>
+<mat-dialog-content>
+  <!-- Contenido del modal -->
+  <form   #createForm="ngForm">
+    <div class="mb-3 ">
+      <input type="file"  (change)="onFileSelected($event)" class="form-control" required>
+    </div>
+    <div class="mb-3 ">
+      <input [(ngModel)]="name" name="description" class="form-control" placeholder="Nombre producto" required>
+    </div>
+    <div class="mb-3 ">
+      <input [(ngModel)]="code" name="description" class="form-control" placeholder="Codigo producto" required>
+    </div>
+    <div class="mb-3 ">
+      <input [(ngModel)]="price" name="description" class="form-control" placeholder="Precio producto" required>
+    </div>
+    <div class="mb-3 ">
+      <input [(ngModel)]="stock" name="description" class="form-control" placeholder="Stock producto" required>
+    </div>
+    <div class="mb-3 ">
+      <input [(ngModel)]="type" name="description" class="form-control" placeholder="Tipo producto" required>
+    </div>
+    <div class="mb-3 ">
+      <textarea [(ngModel)]="description" name="description" class="form-control" placeholder="Descripción del producto" required></textarea>
+    </div>
+    
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button mat-button [mat-dialog-close]="true" (click)="createProduct()" [disabled]=" !description">Guardar</button>
+</mat-dialog-actions>

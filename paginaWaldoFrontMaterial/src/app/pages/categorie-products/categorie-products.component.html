@@ -1,0 +1,39 @@
+
+<div class="container">
+    <div class="breadCrumb">
+        <nav aria-label="breadcrumbComponent">
+            <ol class="breadcrumbComponent">
+              <li *ngFor="let crumb of breadcrumbs; let isLast = last" class="breadcrumb-item">
+                <ng-container *ngIf="!isLast">
+                  <button mat-button color="primary" (click)="navigateTo(crumb)">
+                    <mat-icon *ngIf="crumb.label == 'Home'">home</mat-icon>  {{ crumb.label }}
+                  </button>
+                  <mat-icon class="breadcrumb-separator">chevron_right</mat-icon>
+                </ng-container>
+                <ng-container *ngIf="isLast">
+                  <span>{{ crumb.label }}</span>
+                </ng-container>
+              </li>
+            </ol>
+          </nav>
+    </div>
+    <div class="filters">
+        <div class="side-filters">
+            <app-side-filters
+            [allProductsCategory]="allProductsCategory"
+            [categoriProducts]="categoriProducts"
+            (filteredProductsChange)="updateFilteredProducts($event)"
+            [isCategory]="true">
+          </app-side-filters>
+        </div>
+       
+    </div>
+    <div class="products">
+      <div class="ListProducts">
+        <div *ngFor="let category of filteredProducts">
+          <app-product-item [product]="category" [isOnlyProduct]="false" [isHome]="true"></app-product-item >
+        </div>
+      </div>
+        
+    </div>
+  </div>

@@ -1,0 +1,99 @@
+.container {  display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+    gap: 0% 0%;
+    grid-auto-flow: row;
+    justify-items: center;
+    align-items: center;
+    grid-template-areas:
+      "titleFilters titleFilters"
+      "SectionSubCat SectionSubCat"
+      "SectionSort SectionSort"
+      "SectionPriceFilter SectionPriceFilter"
+      "buttonAllSection buttonAllSection";
+
+      
+  }
+  
+  .titleFilters { 
+    grid-area: titleFilters; 
+  }
+  
+  .SectionSubCat { grid-area: SectionSubCat; }
+  
+  .SectionSort { 
+    grid-area: SectionSort; 
+    
+}
+  
+  .SectionPriceFilter {  display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 33% 33% 33%;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "minPrice"
+      "maxPrice"
+      "buttonFilterPrice";
+    grid-area: SectionPriceFilter;
+  }
+  
+  .minPrice { 
+    grid-area: minPrice;
+    width: 100%;
+   }
+  
+  .maxPrice { grid-area: maxPrice; }
+  
+  .buttonFilterPrice { 
+    grid-area: buttonFilterPrice; 
+  }
+  
+  .buttonAllSection { 
+    grid-area: buttonAllSection; 
+  }
+  
+  @media (max-width: 1350px){
+    .SectionPriceFilter {  display: grid;
+      grid-template-columns: 40% 40% 20%;
+      grid-template-rows: 100%;
+      gap: 0px 0px;
+      grid-auto-flow: row;
+      grid-template-areas:
+        "minPrice maxPrice buttonFilterPrice";
+      grid-area: SectionPriceFilter;
+    }
+    
+    .example-90-width{
+      width: 90%;
+    }
+    .example-90-height{
+      height: 90%;
+    }
+
+    .example-full-width{
+      width: 100%;
+    }
+
+    
+
+    .buttonAllSection { 
+      display: grid;
+      grid-area: buttonAllSection;
+      grid-template-columns: 100%;
+      grid-template-rows: 100%;
+      gap: 0px 0px;
+      grid-auto-flow: row;
+      grid-template-areas:
+        "btnRow";
+      justify-content: end;
+    }
+  
+    .btnrow{
+      grid-area: btnRow;
+      width: 18%;
+      margin: 2%;
+      justify-self: end;
+      justify-content: center;
+    }
+  }

@@ -1,0 +1,14 @@
+.container {  display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 100%;
+    gap: 0% 0%;
+    grid-auto-flow: row;
+    justify-items: center;
+    align-items: center;
+    grid-template-areas:
+      "tableContent";
+    height: 100%;
+  }
+  
+  .tableContent { grid-area: tableContent; }
+  

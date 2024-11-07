@@ -1,0 +1,102 @@
+.container {  display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: 10% 90%;
+    gap: 0% 0%;
+    grid-auto-flow: row;
+    justify-items: center;
+    align-items: center;
+    grid-template-areas:
+      "breadCrumb breadCrumb"
+      "filters products";
+  }
+  
+  .breadCrumb {
+    grid-area: breadCrumb;
+    width: 100%;
+    height: 100%;
+    
+  }
+  
+  .filters {
+    grid-area: filters;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .products {
+    grid-area: products;
+    grid-template-columns: 1fr ;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+    
+  }
+
+ 
+  
+  .ListProducts {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    grid-auto-flow: row;
+    width: 100%;
+  }
+  
+  
+
+  .breadcrumbComponent {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    position:fixed;
+    z-index: 100;
+  }
+  
+  .breadcrumb-item {
+    display: flex;
+    align-items: center;
+  }
+  
+  .breadcrumb-separator {
+    margin: 0 8px;
+  }
+
+  .side-filters{
+    position: fixed;
+    margin-left: 2rem;
+  }
+  @media (max-width: 1350px) {
+    .container {
+        display: grid; 
+        grid-template-columns: 100%; 
+        grid-template-rows: 3% 17% 80%; 
+        gap: 2% 0%; 
+        grid-template-areas: 
+          "breadCrumb"
+          "filters"
+          "products"; 
+        justify-items: center; 
+        align-items: center; 
+      }
+      .filters{
+        margin-bottom: 2rem;
+        
+      }
+
+      .ListProducts {
+        grid-template-columns: repeat(2, 1fr); /* Cambia a 2 columnas en pantallas medianas */
+        gap: 10px;
+        margin-top: 5rem;
+      }
+
+      .side-filters{
+        position: relative;
+        margin-left: 2rem;
+        
+      }
+    
+ }
+  

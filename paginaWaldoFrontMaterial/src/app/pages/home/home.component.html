@@ -1,0 +1,31 @@
+<div class="containerHome">
+  <div class="carouselSection">
+    <app-carousel [images]="[{ url: 'https://www.latercera.com/resizer/zzN969HHW2CS93-Z5e1vDh23APY=/900x600/smart/cloudfront-us-east-1.images.arcpublishing.com/copesa/AWE3KAW6X5COJHCBT3GDT7D5AA.png' },
+      { url: 'https://fullrepuestos.cl/wp-content/uploads/2019/05/1702_2.jpg' }, 
+      { url: 'https://assets-global.website-files.com/646d0b7a987a7233a22c80cf/64d66c6a522b328ec0f412d8_shutterstock_517813702.jpg' }]">
+    </app-carousel>
+  </div>
+  
+  <div class="lastproducts" >
+    
+    <div class="lastTitleProducts">
+      <label>Ultimos Productos Agregados</label>
+    </div>
+    <div class="lastListproducts" >
+      <div *ngFor="let product of lastProducts">
+        <app-product-item [product]="product" [isHome]="true" [isOnlyProduct]="false"></app-product-item>
+      </div>
+      
+    </div>
+  </div>
+  <div class="productsSection" *ngFor="let type of getTypes()">
+    <div class="CatProducts">
+      <label>{{type}}</label>
+    </div>
+    <div class="ListProducts">
+      <div class="catListProducts" *ngFor="let product of getLastProductsByCategory(type)">
+        <app-product-item [product]="product" [isHome]="true" [isOnlyProduct]="false"></app-product-item>
+      </div>
+    </div>
+  </div>
+</div>

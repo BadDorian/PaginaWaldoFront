@@ -1,0 +1,108 @@
+.containerHome {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    justify-items: center;
+    align-items: start;
+    width: 100%;
+  }
+  
+  .carouselSection {
+    width: 100%;
+    height: auto;
+  }
+  
+  .productsSection {
+    display: grid;
+    grid-template-columns: 1fr 3fr; /* Una columna para categorías y otra para productos */
+    gap: 10px;
+    width: 100%;
+  }
+  
+  .ListProducts {
+    display: grid;
+    grid-template-columns: auto auto auto ;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    grid-auto-flow: row;
+    width: 100%;
+  }
+
+  
+  
+  .CatProducts {
+    align-self: center;
+    text-align: center;
+  }
+
+  .lastproducts {
+    display: grid;
+    grid-template-columns: 1fr 3fr; /* Una columna para categorías y otra para productos */
+    gap: 10px;
+    width: 100%;
+  }
+
+  .lastListproducts {
+    display: grid;
+    grid-template-columns: auto auto auto ;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    grid-auto-flow: row;
+    width: 100%;
+  }
+  .lastTitleProducts {
+    align-self: center;
+    text-align: center;
+  }
+
+
+/* Media query para pantallas de 768px o menos */
+@media (max-width: 768px) {
+    .lastproducts {
+      grid-template-columns: 1fr; /* Cambia a una columna única */
+      grid-template-rows: auto auto; /* Dos filas: una para la categoría y otra para los productos */
+    }
+  
+    .lastTitleProducts {
+      grid-column: 1 / -1; /* Se expande en toda la fila */
+      margin-bottom: 10px; /* Espacio debajo del título */
+      background-color: red;
+    }
+  
+    .lastListproducts {
+      grid-template-columns: repeat(1, 1fr); /* Cambia a una columna para dispositivos pequeños */
+      grid-column: 1 / -1; /* Se expande en toda la fila debajo de la categoría */
+      justify-content: center; /* Centrar productos en pantallas pequeñas */
+    }
+
+    .productsSection {
+        grid-template-columns: 1fr; /* Cambia a una columna única */
+        grid-template-rows: auto auto; /* Dos filas: una para la categoría y otra para los productos */
+      }
+    
+      .CatProducts {
+        grid-column: 1 / -1; /* Se expande en toda la fila */
+        margin-bottom: 10px; /* Espacio debajo del título */
+        background-color: red;
+      }
+    
+      .ListProducts {
+        grid-template-columns: repeat(1, 1fr); /* Cambia a una columna para dispositivos pequeños */
+        grid-column: 1 / -1; /* Se expande en toda la fila debajo de la categoría */
+        justify-content: center; /* Centrar productos en pantallas pequeñas */
+      }
+}
+  
+/* Media query para pantallas de 1600px o menos */
+@media (max-width: 1600px) {
+    .ListProducts {
+      grid-template-columns: repeat(2, 1fr); /* Cambia a 2 columnas en pantallas medianas */
+      gap: 10px;
+    }
+    .lastListproducts {
+        grid-template-columns: repeat(2, 1fr); /* Cambia a 2 columnas en pantallas medianas */
+        gap: 10px;
+      }
+}

@@ -1,0 +1,80 @@
+<div class="containerP">
+  <mat-toolbar class="Header header mat-elevation-z5 " >
+    <button type="button" mat-icon-button class="example-icon"  aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Menu Categorias</span>
+    <span class="example-spacer"></span>
+    <button mat-raised-button *ngIf="currentUser" class="separationButton" [routerLink]="['/administracion']" aria-label="Example icon-button with heart icon">
+      Administracion
+    </button>
+    <button mat-raised-button [routerLink]="['/']" class="separationButton" aria-label="Example icon-button with share icon">
+      Inicio
+    </button>
+    <button mat-raised-button *ngIf="currentUser" class="separationButton" aria-label="Example icon-button with share icon">
+      Hola, {{ currentUser }}
+    </button>
+    <button mat-raised-button *ngIf="currentUser" (click)="logout()" class="separationButton" aria-label="Example icon-button with share icon">
+      Cerrar sesión
+    </button>
+    <a mat-raised-button class="separationButton" (click)="toggleCart()">
+      <mat-icon>shopping_cart</mat-icon>
+      <span class="badge text-bg-secondary separationButton" *ngIf="carritoItems.length != 0">{{carritoItems.length}}</span>
+    </a>
+    <span class="example-spacer"></span>
+  </mat-toolbar>
+  <mat-sidenav-container autosize class="example-container SideBar">
+    <mat-sidenav #drawer mode="over" class="content-nav">
+      <div class="containerSideNav">
+        <div class="sideNavContent">
+          <div class="matTreeContent">
+            <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
+    
+              <!-- Nodos con hijos (categorías) -->
+              <mat-tree-node *matTreeNodeDef="let node; when: hasChild" >
+                <a matTreeNodeToggle
+                  [attr.aria-label]="'toggle ' + node.descripcion">
+                  <mat-icon>
+                    {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                  </mat-icon>
+                </a>
+                <a [routerLink]="['/category/', node.id]"  matTooltip="Ver Categoria"> {{node.descripcion}}</a>
+              </mat-tree-node>
+            
+              <!-- Nodos sin hijos (subcategorías) -->
+              <mat-tree-node *matTreeNodeDef="let node">
+                <button mat-icon-button disabled></button>
+                <a [routerLink]="['/subCategory/', node.id]" matTooltip="Ver Sub Categoria">{{node.descripcion}}</a>
+              </mat-tree-node>
+            
+            </mat-tree>
+          </div>
+          <div class="loginContent" *ngIf="!currentUser">
+            <button mat-button (click)="openLoginModal()">Inicio de sesion</button>
+          </div>
+        </div>
+      </div>
+
+      
+  </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet />
+      <div [ngStyle]="{'display': isCartVisible ? 'block' : 'none'}"  class="cart">
+        <app-shopping-cart ></app-shopping-cart>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  <div class="Footer">
+    <mat-toolbar class="footer">
+      
+      <span>Repuestos</span>
+      <span class="example-spacer"></span>
+      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon>favorite</mat-icon>
+      </button>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>share</mat-icon>
+      </button>
+    </mat-toolbar>
+  </div>
+</div>

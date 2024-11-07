@@ -1,0 +1,91 @@
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 50vh; /* Usa vh (viewport height) para que sea más claro. Ajustable al 40% del viewport */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0; /* Color de fondo para cuando no hay imágenes visibles */
+  }
+  
+  .carousel-slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%; /* Ocupa el 100% del ancho */
+  }
+  
+  .carousel-slide {
+    min-width: 100%; /* Cada slide debe ocupar el 100% del ancho */
+    height: 100%; /* El slide ocupará el 100% de la altura del contenedor */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 1s ease-in-out;
+    opacity: 0;
+    position: absolute; /* Hacemos las imágenes superponerse para manejar el efecto de transición */
+    top: 0;
+    left: 0;
+  }
+  
+  .carousel-slide.active {
+    opacity: 1; /* Solo la imagen activa será visible */
+  }
+  
+  .carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill; /* Asegura que la imagen se ajuste dentro del contenedor sin cortarse */
+   
+  }
+  
+  .carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .carousel-control.prev {
+    left: 10px;
+  }
+  
+  .carousel-control.next {
+    right: 10px;
+  }
+  
+  .carousel-indicators {
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .indicator-button {
+    background-color: #ccc;
+    border: none;
+    width: 14px;
+    height: 14px;
+    margin: 0 5px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.5s;
+    opacity: 90%;
+  }
+  
+  .indicator-button.active {
+    background-color: #333;
+    opacity: 80%;
+    width: 13px;
+    height: 13px;
+  }
+  
+  .indicator-button:hover {
+    background-color: #666;
+  }
+  
+  
